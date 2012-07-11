@@ -148,7 +148,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'catalog',
     'utils',
-    'search',
+    # 'search',
     'pagination',
     'mptt',
     'south',
