@@ -7,6 +7,8 @@ from PIL import Image as PImage
 import mptt
 from utils.fields import ThumbnailImageField
 import mystore.settings
+from south.modelsinspector import add_introspection_rules
+
 
 def dictfetchall(cursor):
     "Returns all rows from a cursor as a dict"
@@ -55,7 +57,7 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField('Название', max_length=255, unique=True)
     is_active = models.BooleanField('Включено', default=True)
-    price = models.DecimalField('Цена', max_digits=9, decimal_places=2)
+    new_price = models.DecimalField('Цена', max_digits=9, decimal_places=2)
     slug = models.SlugField('ЧПУ', max_length=255, unique=True,
         help_text='Уникальное значение для ЧПУ.')
     brand_url = models.CharField('Ссылка', max_length=255,
@@ -68,6 +70,7 @@ class Product(models.Model):
     meta_description = models.CharField(max_length=255, blank=True)
     created_at = models.DateTimeField('Дата создания', auto_now_add=True)
     updated_at = models.DateTimeField('Дата обновления', auto_now=True)
+    new_field = models.CharField('Новое поле', max_length=255, blank=True)
 
     class Meta:
         db_table = 'products'
@@ -120,6 +123,7 @@ def pre_delete_handler(sender, **kwargs):
         os.remove(kwargs['instance'].image.path)
     if os.path.exists(kwargs['instance'].image.thumb_path):
         os.remove(kwargs['instance'].image.thumb_path)
-    
+
 pre_delete.connect(pre_delete_handler, sender=Product)
 mptt.register(Category,)
+add_introspection_rules([], ["^utils\.fields\.ThumbnailImageField"])

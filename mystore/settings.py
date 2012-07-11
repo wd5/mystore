@@ -151,6 +151,7 @@ INSTALLED_APPS = (
     'search',
     'pagination',
     'mptt',
+    'south',
     # 'debug_toolbar',
 )
 
