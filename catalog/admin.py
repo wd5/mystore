@@ -19,16 +19,16 @@ admin_image.allow_tags = True
 admin_image.short_description = 'Изображение'
 
 class ProductAdmin(admin.ModelAdmin):
-    fields = (('name', 'is_active'), 'price', 'slug', 'brand_url', 'image', 'description', 'category', ('meta_keywords', 'meta_description'))
+    fields = (('name', 'is_active'), 'new_price', 'slug', 'brand_url', 'image', 'description', 'category', ('meta_keywords', 'meta_description'))
     form = ProductAdminForm
     date_hierarchy = 'created_at'
-    list_display = ('name', admin_image, 'price', 'category', 'created_at', 'updated_at', 'is_active')
+    list_display = ('name', admin_image, 'new_price', 'category', 'created_at', 'updated_at', 'is_active')
     list_display_links = ('name',)
-    list_editable = ('price', 'category')
+    list_editable = ('new_price', 'category')
     list_filter = ('is_active', 'category')
     list_per_page = 50
     ordering = ['-created_at']
-    search_fields = ['name', 'price', 'brand_url', 'description', 'category__name' , 'meta_keywords', 'meta_description']
+    search_fields = ['name', 'new_price', 'brand_url', 'description', 'category__name' , 'meta_keywords', 'meta_description']
     prepopulated_fields = {'slug' : ('name',)}
     add_form_template = 'admin/add_form.html'
     inlines = (ProductAttributeValueInline,)

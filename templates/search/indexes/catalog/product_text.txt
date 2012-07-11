@@ -1,0 +1,4 @@
+{{ object.name }}
+{{ object.new_price }}
+{{ object.brand_url }}
+{{ object.description }}

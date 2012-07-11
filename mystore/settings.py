@@ -152,8 +152,20 @@ INSTALLED_APPS = (
     'pagination',
     'mptt',
     'south',
+    'haystack',
     # 'debug_toolbar',
 )
+
+HAYSTACK_SITECONF = 'search_sites'
+HAYSTACK_SEARCH_ENGINE = 'xapian'
+HAYSTACK_XAPIAN_PATH = os.path.join(os.path.dirname(__file__), '..', 'xapian-index')
+
+# HAYSTACK_CONNECTIONS = {
+#     'default': {
+#         'ENGINE': 'haystack.backends.xapian_backend.XapianEngine',
+#         'PATH': os.path.join(os.path.dirname(__file__), 'xapian_index'),
+#     },
+# }
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
