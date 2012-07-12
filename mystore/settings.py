@@ -67,9 +67,11 @@ MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '..','media').replace('\\',
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = '/static/media'
-ADMIN_MEDIA_PREFIX = '/static/'
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 FEINCMS_ADMIN_MEDIA = '/static/feincms/'
 FEINCMS_ADMIN_MEDIA_LOCATION = path('static/feincms/')
+ADMIN_TOOLS_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
+ADMIN_TOOLS_MENU = 'menu.CustomMenu'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -136,6 +138,10 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

@@ -2,6 +2,7 @@ Django==1.4
 PIL==1.1.7
 South==0.7.5
 argparse==1.2.1
+django-admin-tools==0.4.1
 django-haystack==1.2.7
 django-mptt==0.5.2
 django-pagination==1.0.7
